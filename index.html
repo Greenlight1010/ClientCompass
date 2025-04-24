@@ -1,1 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Compass - ESG Dashboard</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffffff;
+      color: #111;
+      margin: 0;
+      padding: 2rem;
+      max-width: 800px;
+      margin: auto;
+    }
+    h1 {
+      text-align: center;
+      color: #e85c50;
+    }
+    .input-group {
+      display: flex;
+      margin: 2rem 0;
+    }
+    input[type="text"] {
+      flex: 1;
+      padding: 0.5rem;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 5px 0 0 5px;
+    }
+    button {
+      padding: 0.5rem 1rem;
+      font-size: 1rem;
+      background-color: #e85c50;
+      color: white;
+      border: none;
+      border-radius: 0 5px 5px 0;
+      cursor: pointer;
+    }
+    .dashboard {
+      margin-top: 2rem;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .card {
+      background-color: #f9f9f9;
+      padding: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #e85c50;
+    }
+  </style>
+</head>
+<body>
+  <h1>Client Compass</h1>
+  <div class="input-group">
+    <input type="text" id="companyInput" placeholder="Enter company name...">
+    <button onclick="mockSearch()">Search</button>
+  </div>
+
+  <div class="dashboard" id="dashboard">
+    <div class="card">
+      <h2>Company Summary</h2>
+      <p id="summary">Type a company and hit search to view ESG insights.</p>
+    </div>
+    <div class="card">
+      <h2>ESG/Controversy Headlines</h2>
+      <ul id="headlines"></ul>
+    </div>
+    <div class="card">
+      <h2>Positive ESG Signals</h2>
+      <ul id="positives"></ul>
+    </div>
+    <div class="card">
+      <h2>Red Flags</h2>
+      <ul id="redflags"></ul>
+    </div>
+  </div>
+
+  <script>
+    function mockSearch() {
+      const company = document.getElementById("companyInput").value;
+      document.getElementById("summary").textContent = `Showing ESG results for ${company}`;
+
+      const headlines = [
+        `"${company}" faces pressure over carbon emissions reporting`,
+        `Investors call on ${company} to improve labor practices`,
+        `${company} cited in new UN sustainability report`
+      ];
+
+      const positives = [
+        `${company} announced net-zero target by 2040`,
+        `${company} achieved B Corp certification`,
+        `${company} publishes annual sustainability report`
+      ];
+
+      const redflags = [
+        `Whistleblower lawsuit alleges greenwashing at ${company}`,
+        `${company} failed to disclose key emissions in 2022` 
+      ];
+
+      document.getElementById("headlines").innerHTML = headlines.map(h => `<li>${h}</li>`).join("");
+      document.getElementById("positives").innerHTML = positives.map(p => `<li>${p}</li>`).join("");
+      document.getElementById("redflags").innerHTML = redflags.map(r => `<li>${r}</li>`).join("");
+    }
+  </script>
+</body>
+</html>
 
